@@ -1,0 +1,21 @@
+# Ignore everything
+*
+
+# Whitelist dotfiles
+!.gitignore
+!.zshenv
+!.zshrc
+!.profile
+!.shell/
+!.shell/**
+!.tmux.conf
+!.tmux/
+!.tmux/**
+!.gitconfig
+!.config/
+!.config/alacritty/
+!.config/alacritty/alacritty.toml
+!.github/
+!.github/**
+!.dotscripts/
+!.dotscripts/**
