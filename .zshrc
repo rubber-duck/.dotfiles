@@ -13,3 +13,4 @@ case "$(uname -s)" in
   Darwin) source "$SHELLDIR/platform/darwin.zsh" ;;
   Linux)  source "$SHELLDIR/platform/linux.zsh" ;;
 esac
+export PATH="$HOME/.local/bin:$PATH"
