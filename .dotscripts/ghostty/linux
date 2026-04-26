@@ -1,0 +1,13 @@
+
+# PC QMK shortcut layer sends Ctrl+C/V. Ctrl+C only copies when Ghostty has
+# an active selection; otherwise it still reaches the shell/tmux as SIGINT.
+keybind = performable:ctrl+c=copy_to_clipboard
+keybind = ctrl+v=paste_from_clipboard
+
+# Normalize QMK navigation chords to shell/readline sequences that pass through tmux.
+keybind = ctrl+left=esc:b
+keybind = ctrl+right=esc:f
+keybind = ctrl+backspace=text:\x17
+keybind = ctrl+delete=esc:d
+keybind = alt+left=esc:b
+keybind = alt+right=esc:f

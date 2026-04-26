@@ -1,0 +1,11 @@
+
+# Mac QMK shortcut layer sends Cmd+C/V, so leave Ctrl+C alone for SIGINT.
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+
+# Normalize QMK navigation chords to shell/readline sequences that pass through tmux.
+keybind = alt+left=esc:b
+keybind = alt+right=esc:f
+keybind = alt+backspace=text:\x17
+keybind = alt+delete=esc:d
+keybind = super+backspace=text:\x15

@@ -1,0 +1,9 @@
+font-family = "Iosevka Nerd Font Mono"
+font-size = 15
+background-opacity = 0.95
+background-blur = 4
+window-padding-x = 10
+window-padding-y = 4
+
+# Allow tmux copy-mode to sync copies to the system clipboard via OSC 52.
+clipboard-write = allow
