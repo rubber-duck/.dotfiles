@@ -39,10 +39,10 @@ dot checkout -f
   init.lua                     # entrypoint: leader keys, loads config modules
   nvim-pack-lock.json          # vim.pack lockfile (pins exact plugin revisions — commit this)
   lua/config/
-    options.lua                # editor options (numbers, indent, undo, clipboard)
-    keymaps.lua                # general + window/buffer keymaps, vim.pack helpers
-    autocmds.lua               # yank highlight, trim whitespace, restore cursor
-    plugins.lua                # vim.pack plugin specs + setup (gruvbox, LSP, telescope, ...)
+    options.lua                # core editor options (numbers, indent, undo, clipboard)
+    keymaps.lua                # keymaps (placeholder — add your own)
+    autocmds.lua               # autocommands (placeholder — add your own)
+    plugins.lua                # vim.pack plugin specs + setup (gruvbox colorscheme)
 .dotscripts/
   setup.sh                     # post-clone setup (starship config generation)
   sync_sshconf.sh              # push/pull SSH config to/from 1Password
