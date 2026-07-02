@@ -35,6 +35,14 @@ dot checkout -f
 .gitconfig                     # git user, editor, lfs
 .config/alacritty/
   alacritty.toml               # window padding, opacity, font (Iosevka Nerd Font)
+.config/nvim/
+  init.lua                     # entrypoint: leader keys, loads config modules
+  nvim-pack-lock.json          # vim.pack lockfile (pins exact plugin revisions — commit this)
+  lua/config/
+    options.lua                # editor options (numbers, indent, undo, clipboard)
+    keymaps.lua                # general + window/buffer keymaps, vim.pack helpers
+    autocmds.lua               # yank highlight, trim whitespace, restore cursor
+    plugins.lua                # vim.pack plugin specs + setup (gruvbox, LSP, telescope, ...)
 .dotscripts/
   setup.sh                     # post-clone setup (starship config generation)
   sync_sshconf.sh              # push/pull SSH config to/from 1Password
@@ -43,7 +51,8 @@ dot checkout -f
 ## Notes
 
 - **Bare git repo** - files live in their native locations, no symlinks or extra tools needed. A global `.gitignore` ignores everything by default, with tracked files explicitly whitelisted.
-- **No plugin managers** - tpm and similar plugin managers pull and execute arbitrary code from GitHub at runtime with no review step. Instead, themes are security-reviewed and inlined as static config (tmux-gruvbox), or generated from trusted local CLI tools (starship). This way nothing runs that hasn't been read first.
+- **No third-party plugin managers** - tpm and similar plugin managers pull and execute arbitrary code from GitHub at runtime with no review step. Instead, themes are security-reviewed and inlined as static config (tmux-gruvbox), or generated from trusted local CLI tools (starship). This way nothing runs that hasn't been read first.
+- **Neovim plugins via vim.pack** - the exception to the above. Fully vendoring/reviewing a Neovim setup (treesitter's compiled C parsers, blink.cmp's Rust binary, LSP servers) is impractical, so instead: the *manager* is first-party (Neovim core, not third-party infra), every plugin revision is pinned in a committed lockfile (`nvim-pack-lock.json`), and updates only happen on an explicit `:lua vim.pack.update()` — so the review step is diffing that lockfile before committing a bump. The gruvbox colorscheme is additionally pinned to a personal fork (`rubber-duck/gruvbox.nvim`) so upstream can't change what gets pulled.
 - **macOS is not a dev environment** - dev toolchains (dotnet, bun, volta, node) are only configured on Linux. On macOS, all development happens inside Docker containers via Rancher Desktop, keeping the host machine clean and sandboxed from project dependencies. Linux is usually just a workstation VM image or docker dev container.
 - **Platform split** - cross-platform config lives in shared files; macOS and Linux specifics are isolated in `.shell/platform/`
 - **Conditional loading** - all tool completions and paths are guarded with existence checks so missing tools are silently skipped
